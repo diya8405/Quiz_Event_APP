@@ -117,6 +117,30 @@ def quiz_result(request, submission_id):
     return render(request, 'core/quiz_result.html', context)
 
 
+@login_required
+def quiz_history(request):
+    """Display quiz history for the logged-in user."""
+    submissions = UserSubmission.objects.filter(
+        user_name=request.user.username
+    ).select_related('quiz').order_by('-submitted_at')
+    
+    # Calculate percentage for each submission
+    submissions_with_stats = []
+    for submission in submissions:
+        total_questions = submission.quiz.questions.count()
+        percentage = (submission.score / total_questions * 100) if total_questions > 0 else 0
+        submissions_with_stats.append({
+            'submission': submission,
+            'total_questions': total_questions,
+            'percentage': round(percentage, 2)
+        })
+    
+    context = {
+        'submissions_with_stats': submissions_with_stats
+    }
+    return render(request, 'core/quiz_history.html', context)
+
+
 def user_login(request):
     """Handle user login."""
     if request.method == 'POST':
