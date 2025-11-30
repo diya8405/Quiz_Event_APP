@@ -1,4 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.utils import timezone
 from datetime import date
 from .models import Quiz, Question, Answer, UserSubmission, UserAnswer, Event
@@ -31,8 +34,14 @@ def event_list(request):
 def start_quiz(request, quiz_id):
     """Display quiz questions for user to attempt."""
     quiz = get_object_or_404(Quiz.objects.prefetch_related('questions__answers'), id=quiz_id)
+    
+    # Pre-fill username if user is authenticated
+    default_username = request.user.username if request.user.is_authenticated else ''
+    
     context = {
-        'quiz': quiz
+        'quiz': quiz,
+        'default_username': default_username,
+        'is_authenticated': request.user.is_authenticated
     }
     return render(request, 'core/quiz_attempt.html', context)
 
@@ -43,7 +52,12 @@ def submit_quiz(request, quiz_id):
         return redirect('core:start_quiz', quiz_id=quiz_id)
     
     quiz = get_object_or_404(Quiz.objects.prefetch_related('questions__answers'), id=quiz_id)
-    user_name = request.POST.get('user_name', 'Anonymous')
+    
+    # Get username from POST or authenticated user
+    if request.user.is_authenticated:
+        user_name = request.user.username
+    else:
+        user_name = request.POST.get('user_name', 'Anonymous')
     
     # Calculate score
     score = 0
@@ -101,3 +115,28 @@ def quiz_result(request, submission_id):
         'percentage': round(percentage, 2)
     }
     return render(request, 'core/quiz_result.html', context)
+
+
+def user_login(request):
+    """Handle user login."""
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+            messages.success(request, f'Welcome back, {username}!')
+            next_url = request.GET.get('next', 'core:home')
+            return redirect(next_url)
+        else:
+            messages.error(request, 'Invalid username or password.')
+    
+    return render(request, 'core/login.html')
+
+
+def user_logout(request):
+    """Handle user logout."""
+    logout(request)
+    messages.success(request, 'You have been logged out successfully.')
+    return redirect('core:home')
