@@ -13,4 +13,5 @@ urlpatterns = [
     path('history/', views.quiz_history, name='quiz_history'),
     path('login/', views.user_login, name='login'),
     path('logout/', views.user_logout, name='logout'),
+    path('register/', views.register, name='register'),
 ]

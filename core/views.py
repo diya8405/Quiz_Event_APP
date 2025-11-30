@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.utils import timezone
 from datetime import date
@@ -141,8 +142,34 @@ def quiz_history(request):
     return render(request, 'core/quiz_history.html', context)
 
 
+def register(request):
+    """Handle user registration."""
+    if request.user.is_authenticated:
+        return redirect('core:home')
+    
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created successfully for {username}! Please login.')
+            return redirect('core:login')
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f'{field}: {error}')
+    else:
+        form = UserCreationForm()
+    
+    context = {'form': form}
+    return render(request, 'core/register.html', context)
+
+
 def user_login(request):
     """Handle user login."""
+    if request.user.is_authenticated:
+        return redirect('core:home')
+    
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
