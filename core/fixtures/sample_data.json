@@ -1,0 +1,180 @@
+[
+  {
+    "model": "core.quiz",
+    "pk": 1,
+    "fields": {
+      "title": "Python Programming Basics",
+      "description": "Test your knowledge of Python fundamentals including syntax, data types, and basic concepts.",
+      "created_at": "2025-11-01T10:00:00Z",
+      "updated_at": "2025-11-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.question",
+    "pk": 1,
+    "fields": {
+      "quiz": 1,
+      "text": "What is the correct way to create a list in Python?",
+      "question_type": "single",
+      "created_at": "2025-11-01T10:05:00Z"
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 1,
+    "fields": {
+      "question": 1,
+      "text": "my_list = []",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 2,
+    "fields": {
+      "question": 1,
+      "text": "my_list = ()",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 3,
+    "fields": {
+      "question": 1,
+      "text": "my_list = {}",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 4,
+    "fields": {
+      "question": 1,
+      "text": "my_list = <>",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "core.question",
+    "pk": 2,
+    "fields": {
+      "quiz": 1,
+      "text": "Which keyword is used to define a function in Python?",
+      "question_type": "single",
+      "created_at": "2025-11-01T10:10:00Z"
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 5,
+    "fields": {
+      "question": 2,
+      "text": "def",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 6,
+    "fields": {
+      "question": 2,
+      "text": "function",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 7,
+    "fields": {
+      "question": 2,
+      "text": "func",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 8,
+    "fields": {
+      "question": 2,
+      "text": "define",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "core.question",
+    "pk": 3,
+    "fields": {
+      "quiz": 1,
+      "text": "What is the output of: print(type([]))?",
+      "question_type": "single",
+      "created_at": "2025-11-01T10:15:00Z"
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 9,
+    "fields": {
+      "question": 3,
+      "text": "<class 'list'>",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 10,
+    "fields": {
+      "question": 3,
+      "text": "<class 'dict'>",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 11,
+    "fields": {
+      "question": 3,
+      "text": "<class 'tuple'>",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 12,
+    "fields": {
+      "question": 3,
+      "text": "<class 'array'>",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "core.event",
+    "pk": 1,
+    "fields": {
+      "title": "Annual Tech Conference 2025",
+      "description": "Join us for our annual technology conference featuring keynote speakers, workshops, and networking opportunities. Learn about the latest trends in software development, AI, and cloud computing.",
+      "date": "2025-12-15",
+      "location": "Convention Center, Downtown"
+    }
+  },
+  {
+    "model": "core.event",
+    "pk": 2,
+    "fields": {
+      "title": "Python Workshop for Beginners",
+      "description": "A hands-on workshop designed for beginners who want to learn Python programming. Covers basics including variables, data types, loops, and functions. Laptops will be provided.",
+      "date": "2025-12-10",
+      "location": "Community Learning Center, Room 101"
+    }
+  },
+  {
+    "model": "core.event",
+    "pk": 3,
+    "fields": {
+      "title": "Web Development Bootcamp",
+      "description": "Intensive 3-day bootcamp covering HTML, CSS, JavaScript, and modern frameworks. Perfect for aspiring web developers looking to build real-world projects.",
+      "date": "2026-01-20",
+      "location": "Tech Hub, Innovation District"
+    }
+  }
+]
