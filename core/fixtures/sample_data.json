@@ -10,6 +10,16 @@
     }
   },
   {
+    "model": "core.quiz",
+    "pk": 2,
+    "fields": {
+      "title": "Web Development with Django",
+      "description": "Challenge yourself with questions about Django framework, models, views, and templates.",
+      "created_at": "2025-11-15T14:30:00Z",
+      "updated_at": "2025-11-15T14:30:00Z"
+    }
+  },
+  {
     "model": "core.question",
     "pk": 1,
     "fields": {
@@ -144,6 +154,144 @@
     "fields": {
       "question": 3,
       "text": "<class 'array'>",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "core.question",
+    "pk": 4,
+    "fields": {
+      "quiz": 2,
+      "text": "What is the default database used by Django?",
+      "question_type": "single",
+      "created_at": "2025-11-15T14:35:00Z"
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 13,
+    "fields": {
+      "question": 4,
+      "text": "SQLite",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 14,
+    "fields": {
+      "question": 4,
+      "text": "MySQL",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 15,
+    "fields": {
+      "question": 4,
+      "text": "PostgreSQL",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 16,
+    "fields": {
+      "question": 4,
+      "text": "MongoDB",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "core.question",
+    "pk": 5,
+    "fields": {
+      "quiz": 2,
+      "text": "Which command creates a new Django app?",
+      "question_type": "single",
+      "created_at": "2025-11-15T14:40:00Z"
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 17,
+    "fields": {
+      "question": 5,
+      "text": "python manage.py startapp",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 18,
+    "fields": {
+      "question": 5,
+      "text": "django-admin startapp",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 19,
+    "fields": {
+      "question": 5,
+      "text": "python manage.py createapp",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 20,
+    "fields": {
+      "question": 5,
+      "text": "django-admin newapp",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "core.question",
+    "pk": 6,
+    "fields": {
+      "quiz": 2,
+      "text": "What does MTV stand for in Django?",
+      "question_type": "single",
+      "created_at": "2025-11-15T14:45:00Z"
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 21,
+    "fields": {
+      "question": 6,
+      "text": "Model-Template-View",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 22,
+    "fields": {
+      "question": 6,
+      "text": "Model-View-Controller",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 23,
+    "fields": {
+      "question": 6,
+      "text": "Music-Television",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "core.answer",
+    "pk": 24,
+    "fields": {
+      "question": 6,
+      "text": "Multiple-Template-View",
       "is_correct": false
     }
   },
